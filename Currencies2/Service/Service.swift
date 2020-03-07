@@ -36,13 +36,15 @@ class NetworkService {
     }
 }
 
-func loadData(){
+func loadData() {
     let networkService = NetworkService()
     networkService.loadingCurrency { (currResponse) in
         currTypes = currResponse?.Valute ?? [:]
         for name in (currTypes.values){
             currNames.append(name.CharCode)
         }
+        picked1Value = currNames[0]
+        picked2Value = currNames[0]
     }
 }
 

@@ -31,6 +31,8 @@ class CalculateCurrenciesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+     //   picked1Value = currNames[0]
+     //   picked2Value = currNames[0]
         setFields()
         configureViews()
         configureConstraints()

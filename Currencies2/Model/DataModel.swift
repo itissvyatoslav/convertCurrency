@@ -29,5 +29,5 @@ struct Currency: Decodable {
 
 var currTypes: [String: Currency] = [:]
 var currNames: [String] = []
-var picked1Value: String = currNames[0]
-var picked2Value: String = currNames[0]
+var picked1Value: String = ""
+var picked2Value: String = ""
