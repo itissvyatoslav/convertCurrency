@@ -10,32 +10,22 @@ import Foundation
 import UIKit
 
 class CurrenciesPickerView: UIViewController{
-    @IBOutlet weak var currenciesPicker: UIPickerView!
     
-
+    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var currenciesPicker: UIPickerView!
+    @IBAction func saveActionButton(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         configurePicker()
-        configureViews()
-        configureConstraints()
     }
     
     private func configurePicker(){
         currenciesPicker.dataSource = self
         currenciesPicker.delegate = self
-    }
-    
-    private func configureViews(){
-        currenciesPicker.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    private func configureConstraints(){
-        NSLayoutConstraint.activate([
-            currenciesPicker.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            currenciesPicker.leftAnchor.constraint(equalTo: view.leftAnchor),
-            currenciesPicker.rightAnchor.constraint(equalTo: view.rightAnchor),
-            currenciesPicker.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 }
 

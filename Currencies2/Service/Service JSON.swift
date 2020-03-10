@@ -17,7 +17,7 @@ class NetworkService {
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
-                print("Error received data")
+                print("Error received data, check website: \(urlString)")
                 completion(nil)
                 return
             }
@@ -34,22 +34,16 @@ class NetworkService {
             }
         }.resume()
     }
-}
-
-func loadData() {
-    let networkService = NetworkService()
-    networkService.loadingCurrency { (currResponse) in
-        currTypes = currResponse?.Valute ?? [:]
-        for name in (currTypes.values){
-            currNames.append(name.CharCode)
+    
+    func loadData() {
+        let networkService = NetworkService()
+        networkService.loadingCurrency { (currResponse) in
+            currTypes = currResponse?.Valute ?? [:]
+            for name in (currTypes.values){
+                currNames.append(name.CharCode)
+            }
+            picked1Value = ""
+            picked2Value = ""
         }
-        picked1Value = currNames[0]
-        picked2Value = currNames[0]
     }
-}
-
-//MARK: - Counting algorithm
-func counting(cur1 :String, cur2 :String, value1: Double) -> Double{
-    let value2 = value1 * (currTypes[cur1]!.Value) / (currTypes[cur1]!.Nominal) * (currTypes[cur2]!.Nominal) / (currTypes[cur2]!.Value)
-    return value2
 }

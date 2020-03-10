@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class CalculateCurrenciesViewController: UIViewController {
+
     
     @IBOutlet weak var changeCurrencyButton: UIButton!
     @IBOutlet weak var value1Field: UITextField!
@@ -28,61 +29,23 @@ class CalculateCurrenciesViewController: UIViewController {
         setFields()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   picked1Value = currNames[0]
-     //   picked2Value = currNames[0]
         setFields()
-        configureViews()
-        configureConstraints()
     }
     
     private func setFields(){
         currency1Label.text = picked1Value
         currency2Label.text = picked2Value
     }
-//MARK: - Constraints
-    private func configureViews(){
-        self.view.backgroundColor = UIColor.white
-        
-        value1Field.translatesAutoresizingMaskIntoConstraints = false
-        value2Field.translatesAutoresizingMaskIntoConstraints = false
-        directionButton.translatesAutoresizingMaskIntoConstraints = false
-        currency1Label.translatesAutoresizingMaskIntoConstraints = false
-        currency2Label.translatesAutoresizingMaskIntoConstraints = false
-        clearButton.translatesAutoresizingMaskIntoConstraints = false
-    }
 
-    private func configureConstraints(){
-        NSLayoutConstraint.activate([
-            directionButton.leftAnchor.constraint(equalTo: view.centerXAnchor, constant: -30),
-            directionButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
-            directionButton.rightAnchor.constraint(equalTo: view.centerXAnchor, constant: 15),
-            
-            value1Field.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            value1Field.rightAnchor.constraint(equalTo: directionButton.leftAnchor),
-            value1Field.centerYAnchor.constraint(equalTo: directionButton.centerYAnchor),
-            
-
-            value2Field.leftAnchor.constraint(equalTo: directionButton.rightAnchor),
-            value2Field.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            value2Field.centerYAnchor.constraint(equalTo: directionButton.centerYAnchor),
-            
-            changeCurrencyButton.centerXAnchor.constraint(equalTo: directionButton.centerXAnchor),
-            changeCurrencyButton.centerYAnchor.constraint(equalTo: directionButton.centerYAnchor, constant: -20),
-            
-            currency1Label.centerXAnchor.constraint(equalTo: value1Field.centerXAnchor),
-            currency1Label.centerYAnchor.constraint(equalTo: value1Field.centerYAnchor, constant: 40),
-            
-            currency2Label.centerXAnchor.constraint(equalTo: value2Field.centerXAnchor),
-            currency2Label.centerYAnchor.constraint(equalTo: value2Field.centerYAnchor, constant: 40),
-            
-            clearButton.centerXAnchor.constraint(equalTo: directionButton.centerXAnchor),
-            clearButton.centerYAnchor.constraint(equalTo: directionButton.centerYAnchor, constant: 40)
-        ])
-    }
 // MARK: - Conventing algorithm
+    
+    private func counting(cur1 :String, cur2 :String, value1: Double) -> Double{
+        let value2 = value1 * (currTypes[cur1]!.Value) / (currTypes[cur1]!.Nominal) * (currTypes[cur2]!.Nominal) / (currTypes[cur2]!.Value)
+        return value2
+    }
+    
     private func conventing(){
         if (picked1Value == "") {
             noValuesError(title: "Ooops", message: "You didn't select currency")
@@ -102,7 +65,6 @@ class CalculateCurrenciesViewController: UIViewController {
             }
         }
     }
-
 // MARK: - Error windows
     
     private func noValuesError(title: String, message: String){
@@ -111,7 +73,7 @@ class CalculateCurrenciesViewController: UIViewController {
             message: message,
             preferredStyle: .alert)
         alertController.addAction(UIAlertAction(
-            title: "CLose",
+            title: "Close",
             style: .default,
             handler: { _ in
                 alertController.dismiss(animated: true, completion: nil)
@@ -120,3 +82,7 @@ class CalculateCurrenciesViewController: UIViewController {
     }
 }
 
+
+//2. No global elements
+//3. Dispatch loading (передача через делегат)
+//4. CurrenciesPickerView + button

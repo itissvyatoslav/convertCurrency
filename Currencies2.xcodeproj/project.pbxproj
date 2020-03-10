@@ -12,7 +12,7 @@
 		EB9E2EAA24115A5000920078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB9E2EA824115A5000920078 /* Main.storyboard */; };
 		EB9E2EAC24115A5100920078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB9E2EAB24115A5100920078 /* Assets.xcassets */; };
 		EB9E2EAF24115A5100920078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB9E2EAD24115A5100920078 /* LaunchScreen.storyboard */; };
-		EB9E2EB724115A9600920078 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E2EB624115A9600920078 /* Service.swift */; };
+		EB9E2EB724115A9600920078 /* Service JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E2EB624115A9600920078 /* Service JSON.swift */; };
 		EB9E2EB924115AD300920078 /* CurrenciesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E2EB824115AD300920078 /* CurrenciesPickerView.swift */; };
 		EB9E2EBB24115B0000920078 /* CalculateCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E2EBA24115B0000920078 /* CalculateCurrenciesViewController.swift */; };
 		EB9E2EBD24115D4E00920078 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9E2EBC24115D4E00920078 /* DataModel.swift */; };
@@ -26,7 +26,7 @@
 		EB9E2EAB24115A5100920078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB9E2EAE24115A5100920078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB9E2EB024115A5100920078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB9E2EB624115A9600920078 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		EB9E2EB624115A9600920078 /* Service JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service JSON.swift"; sourceTree = "<group>"; };
 		EB9E2EB824115AD300920078 /* CurrenciesPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesPickerView.swift; sourceTree = "<group>"; };
 		EB9E2EBA24115B0000920078 /* CalculateCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCurrenciesViewController.swift; sourceTree = "<group>"; };
 		EB9E2EBC24115D4E00920078 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		EB9E2EC024116E3200920078 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EB9E2EB624115A9600920078 /* Service.swift */,
+				EB9E2EB624115A9600920078 /* Service JSON.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB9E2EBB24115B0000920078 /* CalculateCurrenciesViewController.swift in Sources */,
-				EB9E2EB724115A9600920078 /* Service.swift in Sources */,
+				EB9E2EB724115A9600920078 /* Service JSON.swift in Sources */,
 				EB9E2EB924115AD300920078 /* CurrenciesPickerView.swift in Sources */,
 				EB9E2EA324115A5000920078 /* AppDelegate.swift in Sources */,
 				EB9E2EA524115A5000920078 /* SceneDelegate.swift in Sources */,
