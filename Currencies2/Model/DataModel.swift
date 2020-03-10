@@ -8,7 +8,8 @@
 
 import Foundation
 
-
+class Valute {
+    
     struct CurrResponse: Decodable {
         var Date: String?
         var PreviousDate: String?
@@ -33,7 +34,9 @@ import Foundation
     var picked1Value: String = ""
     var picked2Value: String = ""
     
-
+    static let actualValute = Valute()
+    
+}
 
 
 
