@@ -15,13 +15,15 @@ protocol CurrenciesPickerViewDelegate {
 
 class CurrenciesPickerView: UIViewController{
     
+    let actualValute = Valute.sharedValute
+    
     var delegate: CurrenciesPickerViewDelegate?
     
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var currenciesPicker: UIPickerView!
     @IBAction func saveActionButton(_ sender: Any) {
-        let cur1 = picked1Value
-        let cur2 = picked2Value
+        let cur1 = actualValute.picked1Value
+        let cur2 = actualValute.picked2Value
         delegate?.fillCurrencies(cur1, cur2)
         self.dismiss(animated: true)
     }
@@ -45,19 +47,19 @@ extension CurrenciesPickerView: UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currNames.count
+        return actualValute.currNames.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currNames[row]
+        return actualValute.currNames[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let value1 = pickerView.selectedRow(inComponent: 0)
-        picked1Value = currNames[value1]
+        actualValute.picked1Value = actualValute.currNames[value1]
         let value2 = pickerView.selectedRow(inComponent: 1)
-        picked2Value = currNames[value2]
-        print(picked1Value)
-        print(picked2Value)
+        actualValute.picked2Value = actualValute.currNames[value2]
+        print(actualValute.picked1Value)
+        print(actualValute.picked2Value)
     }
 }

@@ -34,7 +34,7 @@ class Valute {
     var picked1Value: String = ""
     var picked2Value: String = ""
     
-    static let actualValute = Valute()
+    static let sharedValute = Valute()
     
 }
 

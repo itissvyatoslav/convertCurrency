@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class CalculateCurrenciesViewController: UIViewController, CurrenciesPickerViewDelegate {
+    let actualValute = Valute.sharedValute
     
     @IBOutlet weak var changeCurrencyButton: UIButton!
     @IBOutlet weak var value1Field: UITextField!
@@ -45,30 +46,30 @@ class CalculateCurrenciesViewController: UIViewController, CurrenciesPickerViewD
     }
     
     private func setFields(){
-        currency1Label.text = picked1Value
-        currency2Label.text = picked2Value
+        currency1Label.text = actualValute.picked1Value
+        currency2Label.text = actualValute.picked2Value
     }
 
 // MARK: - Conventing algorithm
     
     private func counting(cur1 :String, cur2 :String, value1: Double) -> Double{
-        let value2 = value1 * (currTypes[cur1]!.Value) / (currTypes[cur1]!.Nominal) * (currTypes[cur2]!.Nominal) / (currTypes[cur2]!.Value)
+        let value2 = value1 * (actualValute.currTypes[cur1]!.Value) / (actualValute.currTypes[cur1]!.Nominal) * (actualValute.currTypes[cur2]!.Nominal) / (actualValute.currTypes[cur2]!.Value)
         return value2
     }
     
     private func conventing(){
-        if (picked1Value == "") {
+        if (actualValute.picked1Value == "") {
             noValuesError(title: "Ooops", message: "You didn't select currency")
         } else {
             if ((value1Field.text == "") && (value2Field.text == "")){
                 noValuesError(title: "No values!", message: "Input something")
             } else
                 if (((Double(value1Field.text!)) != nil) && ((value2Field.text!) == "")){
-                    let result = counting(cur1: picked1Value, cur2: picked2Value, value1: Double(value1Field.text!)!)
+                    let result = counting(cur1: actualValute.picked1Value, cur2: actualValute.picked2Value, value1: Double(value1Field.text!)!)
                     value2Field.text = "\(result)"
                 } else
                     if (((Double(value2Field.text!)) != nil) && ((value1Field.text!) == "")){
-                        let result = counting(cur1: picked2Value, cur2: picked1Value, value1: Double(value2Field.text!)!)
+                        let result = counting(cur1: actualValute.picked2Value, cur2: actualValute.picked1Value, value1: Double(value2Field.text!)!)
                         value1Field.text = "\(result)"
                     } else {
                         noValuesError(title: "Clean!", message: "Try one more time")

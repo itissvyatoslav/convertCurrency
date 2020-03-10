@@ -9,7 +9,9 @@
 import Foundation
 
 class NetworkService {
-    func loadingCurrency(completion: @escaping (CurrResponse?) -> Void) {
+    let actualValute = Valute.sharedValute
+    
+    func loadingCurrency(completion: @escaping (Valute.CurrResponse?) -> Void) {
         let urlString = "https://www.cbr-xml-daily.ru/daily_json.js"
         guard let url = URL(string: urlString) else {
             print("Error url")
@@ -27,7 +29,7 @@ class NetworkService {
                 return
             }
             do {
-                let actualCurruncies = try JSONDecoder().decode(CurrResponse.self, from: data)
+                let actualCurruncies = try JSONDecoder().decode(Valute.CurrResponse.self, from: data)
                 completion(actualCurruncies)
             } catch let error {
                 print(error)
@@ -38,12 +40,12 @@ class NetworkService {
     func loadData() {
         let networkService = NetworkService()
         networkService.loadingCurrency { (currResponse) in
-            currTypes = currResponse?.Valute ?? [:]
-            for name in (currTypes.values){
-                currNames.append(name.CharCode)
+            self.actualValute.currTypes = currResponse?.Valute ?? [:]
+            for name in (self.actualValute.currTypes.values){
+                self.actualValute.currNames.append(name.CharCode)
             }
-            picked1Value = ""
-            picked2Value = ""
+            self.actualValute.picked1Value = ""
+            self.actualValute.picked2Value = ""
         }
     }
 }
