@@ -86,8 +86,8 @@
 		EB9E2EBF24116E1B00920078 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB9E2EB824115AD300920078 /* CurrenciesPickerView.swift */,
 				EB9E2EBA24115B0000920078 /* CalculateCurrenciesViewController.swift */,
+				EB9E2EB824115AD300920078 /* CurrenciesPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

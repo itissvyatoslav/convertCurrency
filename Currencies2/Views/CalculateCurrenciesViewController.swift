@@ -93,6 +93,3 @@ class CalculateCurrenciesViewController: UIViewController, CurrenciesPickerViewD
     }
 }
 
-
-//2. No global elements
-
