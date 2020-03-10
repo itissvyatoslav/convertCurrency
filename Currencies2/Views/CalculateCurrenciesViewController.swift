@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class CalculateCurrenciesViewController: UIViewController {
-
+class CalculateCurrenciesViewController: UIViewController, CurrenciesPickerViewDelegate {
     
     @IBOutlet weak var changeCurrencyButton: UIButton!
     @IBOutlet weak var value1Field: UITextField!
@@ -26,12 +25,23 @@ class CalculateCurrenciesViewController: UIViewController {
     }
     @IBAction func pushButtonAction(_ sender: Any) {
         conventing()
-        setFields()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setFields()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "getCurrency" {
+            let destinationVC = segue.destination as! CurrenciesPickerView
+            destinationVC.delegate = self
+        }
+    }
+    
+    func fillCurrencies(_ cur1: String, _ cur2: String) {
+        currency1Label.text = cur1
+        currency2Label.text = cur2
     }
     
     private func setFields(){
@@ -84,5 +94,4 @@ class CalculateCurrenciesViewController: UIViewController {
 
 
 //2. No global elements
-//3. Dispatch loading (передача через делегат)
-//4. CurrenciesPickerView + button
+

@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 
+protocol CurrenciesPickerViewDelegate {
+    func fillCurrencies(_ cur1: String, _ cur2: String)
+}
+
 class CurrenciesPickerView: UIViewController{
     
+    var delegate: CurrenciesPickerViewDelegate?
     
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var currenciesPicker: UIPickerView!
     @IBAction func saveActionButton(_ sender: Any) {
+        let cur1 = picked1Value
+        let cur2 = picked2Value
+        delegate?.fillCurrencies(cur1, cur2)
         self.dismiss(animated: true)
     }
     
