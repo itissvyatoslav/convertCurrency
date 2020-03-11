@@ -38,8 +38,7 @@ class NetworkService {
     }
     
     func loadData() {
-        let networkService = NetworkService()
-        networkService.loadingCurrency { (currResponse) in
+        loadingCurrency { (currResponse) in
             self.actualValute.currTypes = currResponse?.Valute ?? [:]
             for name in (self.actualValute.currTypes.values){
                 self.actualValute.currNames.append(name.CharCode)
